@@ -658,6 +658,8 @@ export default function App() {
   
   // 보관함 탭 검색어, 정렬 옵션 및 그룹 필터 상태
   const [storageSearchTerm, setStorageSearchTerm] = useState('');
+  // 보관함 삭제 완료 및 안내 피드백 팝업 상태 메시지
+  const [storagePopupMessage, setStoragePopupMessage] = useState<string | null>(null);
   const [storageSelectedGroup, setStorageSelectedGroup] = useState<string>('전체');
   const [storageSortOption, setStorageSortOption] = useState<'latestSave' | 'latestView' | 'nameAsc' | 'birthAsc'>('latestSave');
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
@@ -2767,6 +2769,11 @@ export default function App() {
     }));
 
     setEditingItem(null);
+  };
+
+  const handleDeleteFromEditModal = () => {
+    if (!editingItem) return;
+    setDeleteConfirmItem(editingItem);
   };
 
   const handleUpdateGroup = (id: string, group: string) => {
@@ -7935,14 +7942,24 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 pt-1">
+                <div className="grid grid-cols-3 gap-2 pt-1">
                   <button
+                    type="button"
+                    onClick={handleDeleteFromEditModal}
+                    className="w-full py-2.5 rounded-xl bg-gray-800 hover:bg-rose-950/40 text-rose-300 border border-gray-700 hover:border-rose-500/40 text-xs font-bold transition cursor-pointer active:scale-95 flex items-center justify-center gap-1"
+                  >
+                    <span>🗑️</span>
+                    <span>삭제</span>
+                  </button>
+                  <button
+                    type="button"
                     onClick={() => setEditingItem(null)}
                     className="w-full py-2.5 rounded-xl border border-gray-700 bg-navy text-gray-300 hover:text-white text-xs font-semibold transition cursor-pointer"
                   >
                     취소
                   </button>
                   <button
+                    type="button"
                     onClick={handleSaveEdit}
                     className="w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black text-xs font-bold shadow-[0_0_15px_rgba(212,175,55,0.3)] transition cursor-pointer"
                   >
@@ -8061,7 +8078,14 @@ export default function App() {
                     onClick={() => {
                       const idToDelete = deleteConfirmItem.id;
                       setDeleteConfirmItem(null);
-                      setSavedSajuList(prev => prev.filter(item => item.id !== idToDelete));
+                      if (editingItem && editingItem.id === idToDelete) {
+                        setEditingItem(null);
+                      }
+                      setSavedSajuList(prev => {
+                        const nextList = prev.filter(item => item.id !== idToDelete);
+                        return nextList;
+                      });
+                      setStoragePopupMessage('삭제가 완료되었습니다.');
                     }}
                     style={{ backgroundColor: '#E57373', color: '#FFFFFF' }}
                     className="w-full py-2.5 rounded-xl text-xs font-bold transition cursor-pointer shadow-sm hover:opacity-90"
@@ -8069,6 +8093,37 @@ export default function App() {
                     예
                   </button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* 보관함 작업 안내/결과 피드백 팝업 */}
+          {storagePopupMessage && (
+            <div
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn"
+              onClick={() => setStoragePopupMessage(null)}
+            >
+              <div
+                className="bg-[#131d33] border border-amber-400/50 rounded-2xl p-6 max-w-xs w-full shadow-2xl text-center space-y-4 relative"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="w-12 h-12 rounded-full bg-amber-400/15 border border-amber-400/40 flex items-center justify-center mx-auto text-amber-300 text-2xl shadow-lg">
+                  {storagePopupMessage.includes('완료') ? '✅' : storagePopupMessage.includes('실패') ? '⚠️' : 'ℹ️'}
+                </div>
+                <div className="space-y-1.5">
+                  <h3 className="text-base font-bold text-white tracking-tight">
+                    {storagePopupMessage.includes('완료') ? '삭제 완료' : storagePopupMessage.includes('실패') ? '삭제 실패' : '알림'}
+                  </h3>
+                  <p className="text-xs text-gray-200 leading-relaxed font-medium">
+                    {storagePopupMessage}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setStoragePopupMessage(null)}
+                  className="w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black text-xs font-bold shadow-[0_0_15px_rgba(212,175,55,0.3)] transition cursor-pointer"
+                >
+                  확인
+                </button>
               </div>
             </div>
           )}
