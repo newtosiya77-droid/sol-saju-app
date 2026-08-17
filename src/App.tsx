@@ -3231,10 +3231,10 @@ export default function App() {
   const currentSewoonDetail = sewoonData[selectedSewoonIdx] || sewoonData[4];
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-black">
+    <div className="flex justify-center items-center h-[100dvh] min-h-[100dvh] bg-black overflow-hidden">
       {/* 화면 0: 랜딩 뷰 (요청받은 exact HTML 구조) */}
       {viewMode === 'landing' && (
-        <div className="w-[412px] h-[892px] bg-navy flex flex-col justify-between relative overflow-hidden shadow-2xl border border-gray-800 px-7 pt-6 pb-12">
+        <div className="w-full max-w-[412px] h-[100dvh] max-h-[100dvh] sm:h-[892px] sm:max-h-[892px] bg-navy flex flex-col justify-between relative overflow-hidden shadow-2xl border border-gray-800 px-7 pt-6 pb-12 rounded-none sm:rounded-3xl">
           {/* 상단 헤더 */}
           <div className="flex justify-between items-center">
             <span className="text-xs font-bold tracking-widest text-gold uppercase"> </span>
