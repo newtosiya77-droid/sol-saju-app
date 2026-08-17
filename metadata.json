@@ -1,0 +1,8 @@
+{
+  "name": "SOL 사주 만세력",
+  "description": "최신AI를 이용한 정통 만세력 기반 사주 원국 십성·신살 정밀 분석 웹서비스",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

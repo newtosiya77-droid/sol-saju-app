@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .bg-navy { background-color: #0B0F19; }
+  .bg-card { background-color: #131B2E; }
+  .text-gold { color: #D4AF37; }
+  .bg-gold { background-color: #D4AF37; }
+  .border-gold { border-color: #D4AF37; }
+  .border-gold-40 { border-color: rgba(212, 175, 55, 0.4); }
+  .text-wood { color: #4ADE80; } 
+  .text-fire { color: #F87171; } 
+  .text-earth { color: #FACC15; } 
+  .text-metal { color: #F3F4F6; } 
+  .text-water { color: #60A5FA; } 
+  .bg-wood { background-color: #4ADE80; } 
+  .bg-fire { background-color: #F87171; } 
+  .bg-earth { background-color: #FACC15; } 
+  .bg-metal { background-color: #F3F4F6; } 
+  .bg-water { background-color: #60A5FA; } 
+  .text-gradient {
+    background: linear-gradient(to right, #FDE68A, #FACC15, #F59E0B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    -webkit-overflow-scrolling: touch;
+  }
+  .smooth-scroll { scroll-behavior: smooth; }
+  .draggable-box { cursor: grab; user-select: none; }
+  .draggable-box:active { cursor: grabbing; }
+}
+
+html {
+  height: 100%;
+  overscroll-behavior-y: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-color: #0B0F19;
+  color: #F3F4F6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 모바일 네이티브 관성 스크롤 및 터치 제스처 즉각 반응 최적화 */
+.overflow-y-auto {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  touch-action: pan-y !important;
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-x: contain !important;
+  touch-action: pan-x !important;
+}
+
+/* 버튼 및 인터랙티브 터치 요소 딜레이 제거 */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Custom scrollbar for mobile container */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.4);
+}
