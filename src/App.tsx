@@ -7262,7 +7262,7 @@ export default function App() {
                                   </div>
                                 ) : (
                                   /* 2영역 분할: 좌측 (기본 사주 정보) ↔ 우측 (신살 & 길신) */
-                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-stretch">
+                                  <div className="flex flex-col gap-3">
                                     
                                     {/* [ 좌측 영역: 해당 주의 기본 사주 정보 ] */}
                                     <div className="bg-[#0e1628] rounded-xl p-3.5 border border-gray-800/90 flex flex-col justify-between space-y-3">
@@ -7402,7 +7402,7 @@ export default function App() {
                     <div className="bg-card border border-gray-800/90 rounded-2xl p-4 shadow-md space-y-3 relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-36 h-36 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-stretch">
+                      <div className="flex flex-col gap-3">
                         {/* [ 좌측 영역: 🎁 무료 이용 혜택 ] */}
                         {currentUser ? (
                           <div className="bg-[#0e1628] rounded-xl p-3.5 border border-gray-800/90 flex flex-col justify-between space-y-3">
