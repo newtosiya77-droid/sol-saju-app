@@ -3678,7 +3678,7 @@ export default function App() {
                       <span className="text-xl">☯️</span>
                       <span>
                         {!gunghapRepresentativeSaju
-                          ? '대표사주 설정 후 정밀 사주분석 보기'
+                          ? '대표사주 설정 후 사주보기'
                           : '상세 사주분석 보기'}
                       </span>
                       <span className="text-xs bg-white/20 px-2.5 py-0.5 rounded-full ml-1 font-bold">
