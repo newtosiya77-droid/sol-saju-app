@@ -3234,7 +3234,7 @@ export default function App() {
     <div className="flex justify-center items-center h-[100dvh] min-h-[100dvh] bg-black overflow-hidden">
       {/* 화면 0: 랜딩 뷰 (요청받은 exact HTML 구조) */}
       {viewMode === 'landing' && (
-        <div className="w-full max-w-[412px] h-[100dvh] max-h-[100dvh] sm:h-[892px] sm:max-h-[892px] bg-navy flex flex-col justify-between relative overflow-hidden shadow-2xl border border-gray-800 px-7 pt-6 pb-12 rounded-none sm:rounded-3xl">
+        <div className="w-full max-w-[412px] h-[100dvh] max-h-[100dvh] sm:h-[892px] sm:max-h-[100dvh] bg-navy flex flex-col justify-between relative overflow-hidden shadow-2xl border border-gray-800 px-7 pt-6 pb-12 rounded-none sm:rounded-3xl">
           {/* 상단 헤더 */}
           <div className="flex justify-between items-center">
             <span className="text-xs font-bold tracking-widest text-gold uppercase"> </span>
@@ -3311,7 +3311,7 @@ export default function App() {
 
       {/* 화면 1: 정보 입력 뷰 / 로딩 / 결과 뷰 / 보관함 뷰 */}
       {viewMode !== 'landing' && (
-        <div className="w-full max-w-[412px] h-[100dvh] max-h-[100dvh] sm:h-[892px] sm:max-h-[892px] bg-navy flex flex-col justify-between relative overflow-hidden shadow-2xl border border-gray-800 rounded-none sm:rounded-3xl">
+        <div className="w-full max-w-[412px] h-[100dvh] max-h-[100dvh] sm:h-[892px] sm:max-h-[100dvh] bg-navy flex flex-col justify-between relative overflow-hidden shadow-2xl border border-gray-800 rounded-none sm:rounded-3xl">
           {/* 상단 뷰 컨텐츠 영역 (하단 탭바와 분리되어 독립 스크롤 보장) */}
           <div className="flex-1 min-h-0 overflow-hidden flex flex-col relative">
             {/* 보관함 탭 뷰 (activeTab이 'storage' 또는 '보관함'일 때 UI) */}
